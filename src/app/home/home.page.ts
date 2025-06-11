@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Firestore, addDoc, collection } from '@angular/fire/firestore';
+import {
+  Firestore,
+  addDoc,
+  collection,
+  getDocs,
+} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-home',
@@ -7,12 +12,8 @@ import { Firestore, addDoc, collection } from '@angular/fire/firestore';
   styleUrls: ['home.page.scss'],
   standalone: false,
 })
-export class HomePage implements OnInit {
+export class HomePage {
   constructor(private firestore: Firestore) {}
-
-  ngOnInit() {
-    this.testFirestoreWrite();
-  }
 
   async testFirestoreWrite() {
     // Ändra från `async function` till metod
@@ -27,6 +28,19 @@ export class HomePage implements OnInit {
       console.log('Dokument skapat med ID:', docRef.id);
     } catch (error) {
       console.error('Fel vid Firestore-skrivning:', error);
+    }
+  }
+
+  async testFirestoreRead() {
+    try {
+      const querySnapshot = await getDocs(
+        collection(this.firestore, 'testCollection')
+      );
+      querySnapshot.forEach((doc) => {
+        console.log('Dokument:', doc.id, '=>', doc.data());
+      });
+    } catch (error) {
+      console.error('Fel vid Firestore-läsning:', error);
     }
   }
 }

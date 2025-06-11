@@ -4,4 +4,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true"> Ny Övning </ion-content>
+<ion-content [fullscreen]="true">
+  <div>
+    <button (click)="testFirestoreWrite()">Lägg till nytt dokument</button>
+  </div>
+  <div>
+    <button (click)="testFirestoreRead()">Hämta Data</button>
+  </div>
+</ion-content>
