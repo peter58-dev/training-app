@@ -7,7 +7,7 @@ export interface WorkoutProgram {
 export interface Exercise {
   id: string;
   name: string;
-  sets: Set[];
+  sets?: Set[];
 }
 
 export interface Set {
