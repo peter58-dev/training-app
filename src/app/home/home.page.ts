@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
-import {
-  Firestore,
-  addDoc,
-  collection,
-  getDocs,
-} from '@angular/fire/firestore';
+import { ModalController } from '@ionic/angular';
+import { NewProgramComponent } from '../components/new-program/new-program.component';
 
 @Component({
   selector: 'app-home',
@@ -14,40 +10,14 @@ import {
 })
 export class HomePage {
 
-  constructor(private firestore: Firestore) {}
-
-  async testFirestoreWrite() {
-    // Ändra från `async function` till metod
-    try {
-      const docRef = await addDoc(
-        collection(this.firestore, 'testCollection'),
-        {
-          message: 'Firebase fungerar!',
-          timestamp: new Date(),
-        }
-      );
-      console.log('Dokument skapat med ID:', docRef.id);
-    } catch (error) {
-      console.error('Fel vid Firestore-skrivning:', error);
-    }
-  }
-
-  async testFirestoreRead() {
-    try {
-      const querySnapshot = await getDocs(
-        collection(this.firestore, 'testCollection')
-      );
-      querySnapshot.forEach((doc) => {
-        console.log('Dokument:', doc.id, '=>', doc.data());
-      });
-    } catch (error) {
-      console.error('Fel vid Firestore-läsning:', error);
-    }
-  }
+  constructor(private modalCtrl:ModalController) {}
 
 
-openNewProgramModal() {
-console.log('öppnar modal')
+async openNewProgramModal() {
+const modal = await this.modalCtrl.create({
+  component: NewProgramComponent
+})
+modal.present()
 }
 
 }
