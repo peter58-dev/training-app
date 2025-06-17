@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   Firestore,
   addDoc,
@@ -13,6 +13,7 @@ import {
   standalone: false,
 })
 export class HomePage {
+
   constructor(private firestore: Firestore) {}
 
   async testFirestoreWrite() {
@@ -43,4 +44,10 @@ export class HomePage {
       console.error('Fel vid Firestore-läsning:', error);
     }
   }
+
+
+openNewProgramModal() {
+console.log('öppnar modal')
+}
+
 }
