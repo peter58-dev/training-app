@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -17,7 +17,11 @@ newWorkoutForm!: FormGroup;
 
 ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.newWorkoutForm=this.fb.group({
+      namn:['', Validators.required]
+    })
+  }
   cancel() {
     return this.modalCtrl.dismiss(null,'cancel')
 
