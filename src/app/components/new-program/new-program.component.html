@@ -10,7 +10,19 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
+ <form [formGroup]="newWorkoutForm" >
   <ion-item>
-    <ion-input labelPlacement="stacked" label="Enter your name"  placeholder="Your name"></ion-input>
+    <ion-label position="floating">Namn</ion-label>
+    <ion-input formControlName="namn" type="text"></ion-input>
   </ion-item>
+
+  <ion-text color="danger" *ngIf="newWorkoutForm.get('namn')?.touched && newWorkoutForm.get('namn')?.invalid">
+    Namn är obligatoriskt
+  </ion-text>
+
+  <ion-button expand="full" (click)="spara()" [disabled]="newWorkoutForm.invalid">
+    Spara
+  </ion-button>
+</form>
+
 </ion-content>
