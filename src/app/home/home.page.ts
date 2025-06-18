@@ -10,7 +10,7 @@ import { AppService } from '../services/app-service.service';
   standalone: false,
 })
 export class HomePage {
-trainingPrograms = this.appService.trainingPrograms
+programs = this.appService.trainingPrograms
   constructor(
     private modalCtrl:ModalController,
     private appService:AppService
