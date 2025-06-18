@@ -13,9 +13,10 @@
 
 <!-- Fallback om inga program finns -->
 <ng-template #noPrograms>
-  <ion-text color="medium">
-    <p class="ion-padding">Inga träningsprogram ännu. Klicka på + för att lägga till ett!</p>
-  </ion-text>
+  <div class="ion-text-center ion-padding">
+    <ion-icon name="information-circle-outline" size="large" color="medium"></ion-icon>
+    <p>Inga träningsprogram ännu.<br />Klicka på <strong>+</strong> för att lägga till ett!</p>
+  </div>
 </ng-template>
 
 <ion-button (click)="openNewProgramModal()">
