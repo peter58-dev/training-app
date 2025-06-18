@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -11,7 +11,11 @@ import { ModalController } from '@ionic/angular';
 export class NewProgramComponent  implements OnInit {
 newWorkoutForm!: FormGroup;
 
-  constructor(private modalCtrl:ModalController) { }
+  constructor(
+       private modalCtrl:ModalController,
+       private fb: FormBuilder
+
+) { }
 
   ngOnInit() {}
   cancel() {
