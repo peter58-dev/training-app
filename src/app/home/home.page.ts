@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { NewProgramComponent } from '../components/new-program/new-program.component';
+import { AppService } from '../services/app-service.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,10 @@ import { NewProgramComponent } from '../components/new-program/new-program.compo
 })
 export class HomePage {
 
-  constructor(private modalCtrl:ModalController) {}
+  constructor(
+    private modalCtrl:ModalController,
+    private appService:AppService
+  ) {}
 
 
 async openNewProgramModal() {
