@@ -5,11 +5,18 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-<ion-list *ngIf="programs().length >0; else tom">
+<ion-list *ngIf="programs().length >0; else noPrograms">
   <ion-item *ngFor="let workout of programs()">
   {{workout.namn}}
   </ion-item>
 </ion-list>
+
+<!-- Fallback om inga program finns -->
+<ng-template #noPrograms>
+  <ion-text color="medium">
+    <p class="ion-padding">Inga träningsprogram ännu. Klicka på + för att lägga till ett!</p>
+  </ion-text>
+</ng-template>
 
 <ion-button (click)="openNewProgramModal()">
   <ion-icon slot="start" name="add"></ion-icon>
