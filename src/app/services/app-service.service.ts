@@ -18,13 +18,14 @@ private firestore = inject(Firestore);
        const colRef = collection(this.firestore, 'trainingPrograms');
 
     // Firebase lyssnar i realtid och uppdaterar signalen direkt
-    onSnapshot(colRef, (snapshot) => {
-      const result = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      this.trainingPrograms.set(result);
-    });
+  onSnapshot(colRef, (snapshot) => {
+  const workouts = snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  this.trainingPrograms.set(workouts);
+});
+
   }
 
    async addProgram(namn: string) {
