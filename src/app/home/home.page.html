@@ -6,8 +6,8 @@
 
 <ion-content class="ion-padding">
 <ion-list *ngIf="programs().length >0; else tom">
-  <ion-item>
-    <ion-label>Pokémon Yellow</ion-label>
+  <ion-item *ngFor="let workout of programs()">
+  {{workout.namn}}
   </ion-item>
 </ion-list>
 
