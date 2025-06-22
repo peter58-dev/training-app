@@ -29,10 +29,12 @@ export class AppService {
   initTrainingProgramListener() {
     const colRef = collection(this.firestore, 'trainingPrograms');
     this.unsubscribePrograms = onSnapshot(colRef, (snapshot) => {
-      const workouts = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+      const workouts = snapshot.docs
+        .map((doc) => ({
+          id: doc.id,
+          ...(doc.data() as { namn: string }),
+        }))
+        .sort((a, b) => a.namn.localeCompare(b.namn));
       this.trainingPrograms.set(workouts);
     });
   }
