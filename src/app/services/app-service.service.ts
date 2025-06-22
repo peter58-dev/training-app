@@ -1,34 +1,41 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { addDoc, collection, deleteDoc, doc, Firestore, onSnapshot, updateDoc } from '@angular/fire/firestore';
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  Firestore,
+  onSnapshot,
+  updateDoc,
+} from '@angular/fire/firestore';
 
 export interface TrainingProgram {
-  id: string //autogenererad,
-  namn:string
+  id: string; //autogenererad,
+  namn: string;
 }
 @Injectable({
   providedIn: 'root',
 })
 export class AppService {
-private firestore = inject(Firestore);
-
   // Signal som innehåller listan
   trainingPrograms = signal<any[]>([]);
 
+  private unsubscribePrograms: () => void;
+
   constructor() {
-       const colRef = collection(this.firestore, 'trainingPrograms');
+    const colRef = collection(this.firestore, 'trainingPrograms');
 
     // Firebase lyssnar i realtid och uppdaterar signalen direkt
-  onSnapshot(colRef, (snapshot) => {
-  const workouts = snapshot.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
-  this.trainingPrograms.set(workouts);
-});
-
+    onSnapshot(colRef, (snapshot) => {
+      const workouts = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      this.trainingPrograms.set(workouts);
+    });
   }
 
-   async addProgram(namn: string) {
+  async addProgram(namn: string) {
     const colRef = collection(this.firestore, 'trainingPrograms');
     await addDoc(colRef, {
       namn,
@@ -46,5 +53,3 @@ private firestore = inject(Firestore);
     await updateDoc(docRef, { namn });
   }
 }
-
-
