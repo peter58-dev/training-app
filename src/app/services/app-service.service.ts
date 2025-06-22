@@ -47,6 +47,10 @@ export class AppService {
     });
   }
 
+  stopTrainingProgramsListener() {
+    if (this.unsubscribePrograms) this.unsubscribePrograms();
+  }
+
   async deleteProgram(id: string) {
     const docRef = doc(this.firestore, 'trainingPrograms', id);
     await deleteDoc(docRef);
