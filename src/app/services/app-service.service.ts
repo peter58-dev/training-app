@@ -22,18 +22,7 @@ export class AppService {
 
   private unsubscribePrograms: () => void;
 
-  constructor() {
-    const colRef = collection(this.firestore, 'trainingPrograms');
-
-    // Firebase lyssnar i realtid och uppdaterar signalen direkt
-    onSnapshot(colRef, (snapshot) => {
-      const workouts = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      this.trainingPrograms.set(workouts);
-    });
-  }
+  constructor(private firestore: Firestore) {}
 
   async addProgram(namn: string) {
     const colRef = collection(this.firestore, 'trainingPrograms');
