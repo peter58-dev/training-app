@@ -20,9 +20,22 @@ export class AppService {
   // Signal som innehåller listan
   trainingPrograms = signal<any[]>([]);
 
-  private unsubscribePrograms: () => void;
+  private unsubscribePrograms: (() => void) | undefined;
 
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore) {
+    this.initTrainingProgramListener();
+  }
+
+  initTrainingProgramListener() {
+    const colRef = collection(this.firestore, 'trainingPrograms');
+    this.unsubscribePrograms = onSnapshot(colRef, (snapshot) => {
+      const workouts = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      this.trainingPrograms.set(workouts);
+    });
+  }
 
   async addProgram(namn: string) {
     const colRef = collection(this.firestore, 'trainingPrograms');
