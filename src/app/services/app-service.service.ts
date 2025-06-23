@@ -8,11 +8,8 @@ import {
   onSnapshot,
   updateDoc,
 } from '@angular/fire/firestore';
+import { Program } from 'src/model/app.interfaces';
 
-export interface TrainingProgram {
-  id: string; //autogenererad,
-  namn: string;
-}
 @Injectable({
   providedIn: 'root',
 })
