@@ -27,6 +27,6 @@ export class HomePage implements OnInit, OnDestroy {
     modal.present();
   }
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+    this.appService.stopTrainingProgramsListener();
   }
 }
