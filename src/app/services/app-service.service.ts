@@ -8,7 +8,7 @@ import {
   onSnapshot,
   updateDoc,
 } from '@angular/fire/firestore';
-import { Program } from 'src/model/app.interfaces';
+import { Program, ProgramInput, ProgramRef } from 'src/model/app.interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -36,20 +36,17 @@ export class AppService {
     });
   }
 
-  async addProgram(namn: string) {
+  async addProgram(program: ProgramInput) {
     const colRef = collection(this.firestore, 'trainingPrograms');
-    await addDoc(colRef, {
-      namn,
-      createdAt: new Date(),
-    });
+    await addDoc(colRef, program);
   }
 
   stopTrainingProgramsListener() {
     if (this.unsubscribePrograms) this.unsubscribePrograms();
   }
 
-  async deleteProgram(id: string) {
-    const docRef = doc(this.firestore, 'trainingPrograms', id);
+  async deleteProgram(ref: ProgramRef) {
+    const docRef = doc(this.firestore, 'trainingPrograms', ref.id);
     await deleteDoc(docRef);
   }
 
