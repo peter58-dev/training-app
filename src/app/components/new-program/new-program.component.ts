@@ -7,45 +7,41 @@ import { AppService } from 'src/app/services/app-service.service';
   selector: 'app-new-program',
   templateUrl: './new-program.component.html',
   styleUrls: ['./new-program.component.scss'],
-  standalone:false
+  standalone: false,
 })
-export class NewProgramComponent  implements OnInit {
-
-newWorkoutForm!: FormGroup;
+export class NewProgramComponent implements OnInit {
+  newWorkoutForm!: FormGroup;
 
   constructor(
-       private modalCtrl:ModalController,
-       private fb: FormBuilder,
-       private appService: AppService
-
-) { }
+    private modalCtrl: ModalController,
+    private fb: FormBuilder,
+    private appService: AppService
+  ) {}
 
   ngOnInit() {
-    this.newWorkoutForm=this.fb.group({
-      namn:['', Validators.required]
-    })
+    this.newWorkoutForm = this.fb.group({
+      namn: ['', Validators.required],
+    });
   }
 
-spara() {
-if(this.newWorkoutForm.invalid) return
+  spara() {
+    if (this.newWorkoutForm.invalid) return;
 
-const namn = this.newWorkoutForm.value.namn
+    const namn = this.newWorkoutForm.value.namn;
 
-this.appService.addProgram(namn)
-.then(()=> {
-  this.newWorkoutForm.reset()  //töm formuläret
-  this.modalCtrl.dismiss()
-})
-.catch( e => {
-  console.error('fel vid sparande', e)
-})
+    this.appService
+      .addProgram({ namn, createdAt: new Date() })
 
-}
-
+      .then(() => {
+        this.newWorkoutForm.reset(); //töm formuläret
+        this.modalCtrl.dismiss();
+      })
+      .catch((e) => {
+        console.error('fel vid sparande', e);
+      });
+  }
 
   cancel() {
-    return this.modalCtrl.dismiss(null,'cancel')
-
-}
-
+    return this.modalCtrl.dismiss(null, 'cancel');
+  }
 }
