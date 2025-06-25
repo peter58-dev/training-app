@@ -26,6 +26,11 @@ export class HomePage implements OnInit, OnDestroy {
     });
     modal.present();
   }
+
+  deleteProgram(id: string) {
+    this.appService.deleteProgram({ id });
+  }
+
   ngOnDestroy(): void {
     this.appService.stopTrainingProgramsListener();
   }

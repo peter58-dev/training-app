@@ -8,7 +8,7 @@
   <ion-list *ngIf="programs().length >0; else noPrograms">
     <ion-item *ngFor="let workout of programs()">
       {{workout.namn}}
-      <ion-button (click)="deleteProgram()">
+      <ion-button (click)="deleteProgram(workout.id)">
         <ion-icon slot="start" name="trash"></ion-icon>
       </ion-button>
     </ion-item>
