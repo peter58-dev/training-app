@@ -17,7 +17,7 @@ export class HomePage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.appService.initTrainingProgramListener();
   }
 
   async openNewProgramModal() {
