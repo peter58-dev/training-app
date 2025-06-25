@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { NewProgramComponent } from '../components/new-program/new-program.component';
 import { AppService } from '../services/app-service.service';
@@ -9,19 +9,24 @@ import { AppService } from '../services/app-service.service';
   styleUrls: ['home.page.scss'],
   standalone: false,
 })
-export class HomePage {
-programs = this.appService.trainingPrograms
+export class HomePage implements OnInit, OnDestroy {
+  programs = this.appService.trainingPrograms;
   constructor(
-    private modalCtrl:ModalController,
-    private appService:AppService
+    private modalCtrl: ModalController,
+    private appService: AppService
   ) {}
 
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
-async openNewProgramModal() {
-const modal = await this.modalCtrl.create({
-  component: NewProgramComponent
-})
-modal.present()
-}
-
+  async openNewProgramModal() {
+    const modal = await this.modalCtrl.create({
+      component: NewProgramComponent,
+    });
+    modal.present();
+  }
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
+  }
 }
