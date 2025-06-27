@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   standalone: false,
@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pause-countdown.component.scss'],
 })
 export class PauseCountdownComponent implements OnInit {
-  pauseSeconds = 90
+ @Input() pauseSeconds: number = 90
+
+
 minuter:string ='01'
 sekunder:string = '90'
 private timerIntervall:any
