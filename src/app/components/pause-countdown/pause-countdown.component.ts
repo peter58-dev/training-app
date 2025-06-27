@@ -23,11 +23,19 @@ private timerIntervall: number | undefined;  // 👈 korrekt typ
     this.timerIntervall = window.setInterval(() => this.pauseDecrease(), 1000);
   }
  pauseDecrease(): void {
-    if (this.pauseSeconds > 0) {
+    if (this.pauseSeconds > 1) {
       this.pauseSeconds--;
       this.updateTimedDisplay();
     } else {
       clearInterval(this.timerIntervall);
+
+      this.pauseSeconds = 0
+      this.updateTimedDisplay()
+
+      this.timeoutRef=window.setTimeout(()=> {
+        this.modalCtrl.dismiss()
+      }, 250)
+
 
      /*  // Ljud + eventuell fördröjning innan modal stängs
       this.playEndSound();
