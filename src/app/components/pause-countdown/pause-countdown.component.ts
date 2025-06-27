@@ -7,7 +7,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pause-countdown.component.scss'],
 })
 export class PauseCountdownComponent implements OnInit {
+  pauseSeconds = 90
+minuter:string ='01'
+sekunder:string = '90'
+private timerIntervall:any
+
   constructor() {}
 
   ngOnInit() {}
+
+
+  startPause(){
+
+  }
+
+  /* updateTimedDisplay() {
+    const mins = Math.floor(this.pauseSeconds/60)
+    const secs = this.pauseSeconds % 60
+
+    this.minuter=
+  } */
+
+    pad(tid:number):string {
+      return tid.toString().padStart(2, '0')
+    }
 }
