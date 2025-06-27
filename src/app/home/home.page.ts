@@ -32,6 +32,8 @@ export class HomePage implements OnInit, OnDestroy {
 async openTimerModal() {
 const timerModal = await this.modalCtrl.create({
   component:PauseCountdownComponent,
+  componentProps:{pauseSeconds:90},
+  backdropDismiss:false
 })
 timerModal.present()
 }
