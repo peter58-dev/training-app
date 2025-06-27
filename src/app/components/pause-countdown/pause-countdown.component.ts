@@ -39,9 +39,7 @@ private timerIntervall: number | undefined;  // 👈 korrekt typ
     }
   }
 
-  startPause(){
 
-  }
 
   updateTimedDisplay() {
     const mins = Math.floor(this.pauseSeconds/60)
@@ -54,4 +52,15 @@ private timerIntervall: number | undefined;  // 👈 korrekt typ
     pad(tid:number):string {
       return tid.toString().padStart(2, '0')
     }
+    close() {
+    clearInterval(this.timerIntervall);
+    clearTimeout(this.timeoutRef);
+    this.modalCtrl.dismiss();
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.timerIntervall);
+    clearTimeout(this.timeoutRef);
+  }
+
 }
