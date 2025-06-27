@@ -21,12 +21,13 @@ private timerIntervall:any
 
   }
 
-  /* updateTimedDisplay() {
+  updateTimedDisplay() {
     const mins = Math.floor(this.pauseSeconds/60)
     const secs = this.pauseSeconds % 60
 
-    this.minuter=
-  } */
+    this.minuter=this.pad(mins)
+    this.sekunder=this.pad(secs)
+  }
 
     pad(tid:number):string {
       return tid.toString().padStart(2, '0')
