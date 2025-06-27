@@ -10,6 +10,9 @@ import { AppService } from '../services/app-service.service';
   standalone: false,
 })
 export class HomePage implements OnInit, OnDestroy {
+openTimerModal() {
+throw new Error('Method not implemented.');
+}
   programs = this.appService.trainingPrograms;
   constructor(
     private modalCtrl: ModalController,
