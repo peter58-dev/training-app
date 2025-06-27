@@ -18,7 +18,13 @@ private timerIntervall: number | undefined;  // 👈 korrekt typ
 
   constructor(private modalCtrl: ModalController) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+     this.updateTimedDisplay();
+    this.timerIntervall = window.setInterval(() => this.pauseDecrease(), 1000);
+  }
+  pauseDecrease() {
+    throw new Error('Method not implemented.');
+  }
 
 
   startPause(){
