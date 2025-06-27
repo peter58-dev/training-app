@@ -10,7 +10,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'workout',
+    loadChildren: () => import('./pages/workout/workout.module').then( m => m.WorkoutPageModule)
   },
+
 ];
 
 @NgModule({
