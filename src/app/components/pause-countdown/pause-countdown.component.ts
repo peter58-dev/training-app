@@ -22,10 +22,22 @@ private timerIntervall: number | undefined;  // 👈 korrekt typ
      this.updateTimedDisplay();
     this.timerIntervall = window.setInterval(() => this.pauseDecrease(), 1000);
   }
-  pauseDecrease() {
-    throw new Error('Method not implemented.');
-  }
+ pauseDecrease(): void {
+    if (this.pauseSeconds > 0) {
+      this.pauseSeconds--;
+      this.updateTimedDisplay();
+    } else {
+      clearInterval(this.timerIntervall);
 
+     /*  // Ljud + eventuell fördröjning innan modal stängs
+      this.playEndSound();
+
+      // Om du vill vänta t.ex. 1 sekund efter ljud:
+      this.timeoutRef = window.setTimeout(() => this.modalCtrl.dismiss(), 1000);
+
+      // ...eller direkt: this.modalCtrl.dismiss(); */
+    }
+  }
 
   startPause(){
 
