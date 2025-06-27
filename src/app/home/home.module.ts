@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { HomePage } from './home.page';
 
 import { NewProgramComponent } from '../components/new-program/new-program.component';
+import { PauseCountdownComponent } from '../components/pause-countdown/pause-countdown.component';
 import { HomePageRoutingModule } from './home-routing.module';
 
 
@@ -16,6 +17,6 @@ import { HomePageRoutingModule } from './home-routing.module';
     HomePageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [HomePage,NewProgramComponent ]
+  declarations: [HomePage,NewProgramComponent, PauseCountdownComponent]
 })
 export class HomePageModule {}

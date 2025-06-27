@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { NewProgramComponent } from '../components/new-program/new-program.component';
+import { PauseCountdownComponent } from '../components/pause-countdown/pause-countdown.component';
 import { AppService } from '../services/app-service.service';
 
 @Component({
@@ -10,9 +11,7 @@ import { AppService } from '../services/app-service.service';
   standalone: false,
 })
 export class HomePage implements OnInit, OnDestroy {
-openTimerModal() {
-throw new Error('Method not implemented.');
-}
+
   programs = this.appService.trainingPrograms;
   constructor(
     private modalCtrl: ModalController,
@@ -29,6 +28,14 @@ throw new Error('Method not implemented.');
     });
     modal.present();
   }
+
+async openTimerModal() {
+const timerModal = await this.modalCtrl.create({
+  component:PauseCountdownComponent,
+})
+timerModal.present()
+}
+
 
   deleteProgram(id: string) {
     this.appService.deleteProgram({ id });
