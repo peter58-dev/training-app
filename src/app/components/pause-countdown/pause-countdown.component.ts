@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   standalone: false,
@@ -12,9 +13,10 @@ export class PauseCountdownComponent implements OnInit {
 
 minuter:string ='01'
 sekunder:string = '90'
-private timerIntervall:any
+private timerIntervall: number | undefined;  // 👈 korrekt typ
+  private timeoutRef: number | undefined;      // 👈 om du vill lägga till ljudfördröjning e.dyl.
 
-  constructor() {}
+  constructor(private modalCtrl: ModalController) {}
 
   ngOnInit() {}
 
