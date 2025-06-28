@@ -1,4 +1,5 @@
 import { Injectable, signal } from '@angular/core';
+import { Firestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -9,5 +10,5 @@ export class ExerciseService {
   private unsubscribeExercises: (() => void) | undefined
 
 
-  constructor() { }
+  constructor(private firestore: Firestore) { }
 }
