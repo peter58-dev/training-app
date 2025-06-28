@@ -16,7 +16,7 @@ export type ID = string;
 
 export interface Exercise {
   id: string;
-  name: string;
+  namn: string;
   sets?: Set[];
 }
 
