@@ -29,4 +29,10 @@ initExerciseListener(programId:string) {
 }
 
 
+stopExerciseListener(){
+  if(this.unsubscribeExercises){
+    this.unsubscribeExercises()
+  }
+}
+
 }
