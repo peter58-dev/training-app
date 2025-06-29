@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
-import { collection, onSnapshot } from 'firebase/firestore';
+import { collection, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
 import { Exercise } from 'model/app.interfaces';
 
 @Injectable({
@@ -35,6 +35,9 @@ stopExerciseListener(){
   }
 }
 
-
+async deleteExercise(programId:string, exerciseId:string): Promise<void>{
+  const docRef =doc(this.firestore,`trainingPrograms/${programId}/exercises/${exerciseId}`)
+  await deleteDoc(docRef)
+}
 
 }
