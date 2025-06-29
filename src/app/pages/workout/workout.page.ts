@@ -9,7 +9,7 @@ import { ExerciseService } from 'app/services/exercise.service';
   styleUrls: ['./workout.page.scss'],
 })
 export class WorkoutPage implements OnInit,OnDestroy {
-  programId!:string
+  programId:string | undefined
 
   readonly exercises = this.exerciseService.exercises
 
@@ -19,7 +19,12 @@ export class WorkoutPage implements OnInit,OnDestroy {
   ) { }
 
 
-  ngOnInit() {
+  ngOnInit(): void {
+   const id = this.route.snapshot.paramMap.get('id');
+if (id) {
+  this.programId = id;
+  this.exerciseService.initExerciseListener(this.programId);
+}
   }
 
    ngOnDestroy(): void {
