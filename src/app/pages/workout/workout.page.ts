@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ExerciseService } from 'app/services/exercise.service';
 
 @Component({
   standalone:false,
@@ -7,8 +8,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
   styleUrls: ['./workout.page.scss'],
 })
 export class WorkoutPage implements OnInit,OnDestroy {
+  readonly exercises = this.exerciseService.exercises
 
-  constructor() { }
+  constructor(private exerciseService : ExerciseService) { }
 
 
   ngOnInit() {
