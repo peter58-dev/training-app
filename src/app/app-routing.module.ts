@@ -10,8 +10,9 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-  },  {
-    path: 'workout',
+  },
+  {
+    path: 'workout/:id',
     loadChildren: () => import('./pages/workout/workout.module').then( m => m.WorkoutPageModule)
   },
 
