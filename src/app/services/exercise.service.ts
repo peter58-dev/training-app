@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
-import { collection, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
+import { collection, deleteDoc, doc, onSnapshot, updateDoc } from 'firebase/firestore';
 import { Exercise } from 'model/app.interfaces';
 
 @Injectable({
@@ -40,4 +40,8 @@ async deleteExercise(programId:string, exerciseId:string): Promise<void>{
   await deleteDoc(docRef)
 }
 
+
+async updateExercise(programId: string, exerciseId:string,updates:Omit<Exercise, 'id'>):Promise<void>{const docRef= doc(this.firestore,`trainingPrograms/${programId}/exercises/${exerciseId}`)
+await updateDoc(docRef,updates)
+}
 }
