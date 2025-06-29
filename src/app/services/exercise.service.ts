@@ -1,7 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { collection, onSnapshot } from 'firebase/firestore';
-import { Exercise } from 'src/model/app.interfaces';
+import { Exercise } from 'model/app.interfaces';
 
 @Injectable({
   providedIn: 'root'
