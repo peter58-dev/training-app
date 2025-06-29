@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   standalone:false,
@@ -6,11 +6,15 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './workout.page.html',
   styleUrls: ['./workout.page.scss'],
 })
-export class WorkoutPage implements OnInit {
+export class WorkoutPage implements OnInit,OnDestroy {
 
   constructor() { }
+
 
   ngOnInit() {
   }
 
+   ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
+  }
 }
