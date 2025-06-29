@@ -18,10 +18,10 @@ export class ExerciseService {
 initExerciseListener(programId:string) {
   const colRef = collection(this.firestore,`trainingPrograms/${programId}/exercises`)
   this.unsubscribeExercises=onSnapshot(colRef,(snapshot)=> {
-    const list = snapshot.docs.map(
+    const list: Exercise[] = snapshot.docs.map(
       doc => ({
         id:doc.id,
-        ...(doc.data() as {namn: string, sets: any[]})
+        ...(doc.data() as Omit <Exercise,'id'>)
       })
     )
     this.exercises.set(list)
@@ -34,5 +34,7 @@ stopExerciseListener(){
     this.unsubscribeExercises()
   }
 }
+
+
 
 }
