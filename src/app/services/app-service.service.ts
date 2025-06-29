@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import {
   addDoc,
   collection,
@@ -8,7 +8,7 @@ import {
   onSnapshot,
   updateDoc,
 } from '@angular/fire/firestore';
-import { Program, ProgramInput, ProgramRef } from 'src/model/app.interfaces';
+import { ProgramInput, ProgramRef } from '../../model/app.interfaces';
 
 @Injectable({
   providedIn: 'root',

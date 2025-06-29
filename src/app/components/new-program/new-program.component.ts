@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
-import { AppService } from 'src/app/services/app-service.service';
+import { AppService } from '../../services/app-service.service';
 
 @Component({
   selector: 'app-new-program',
