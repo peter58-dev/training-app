@@ -28,6 +28,6 @@ if (id) {
   }
 
    ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+   this.exerciseService.stopExerciseListener()
   }
 }
